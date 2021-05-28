@@ -7,7 +7,8 @@ class UsersController < ApplicationController
     end 
 
     def create  
-        @user = User.new(params[:id])
+        debugger
+        @user = User.new(user_params)
         if @user.save
             redirect_to user_url(@user)
         else
@@ -18,6 +19,6 @@ class UsersController < ApplicationController
 
 
     def user_params
-        params.require(:user).permits(:user_name, :password)
+        params.require(:users).permit(:user_name, :password)
     end
 end 

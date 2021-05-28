@@ -1,10 +1,12 @@
 class CatsController < ApplicationController
   def index
+    debugger
     @cats = Cat.all
     render :index
   end
 
   def show
+    debugger
     @cat = Cat.find(params[:id])
     render :show
   end
@@ -15,6 +17,7 @@ class CatsController < ApplicationController
   end
 
   def create
+    debugger
     @cat = Cat.new(cat_params)
     if @cat.save
       redirect_to cat_url(@cat)
@@ -44,4 +47,7 @@ class CatsController < ApplicationController
   def cat_params
     params.require(:cat).permit(:age, :birth_date, :color, :description, :name, :sex)
   end
+
+  
+
 end
